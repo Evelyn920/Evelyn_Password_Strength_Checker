@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Check password strength and generate secure passwords privately in your browser.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
+  <title>Passwork | Password Strength Checker</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="passwords.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top"><span class="brand-icon" aria-hidden="true">✳</span> passwork<span class="brand-period">.</span></a>
+      <nav aria-label="Main navigation"><a href="#checker">Checker</a><a href="#generator">Generator</a><a href="#guide">Safety tips</a></nav>
+      <span class="local"><span></span> Local processing</span>
+    </div>
+  </header>
+  <main class="wrap" id="top">
+    <section class="hero" aria-labelledby="title">
+      <img class="hero-art" src="assets/shield.jpg" alt="" width="2172" height="724">
+      <div class="hero-content">
+        <p class="eyebrow"><span aria-hidden="true"></span> CYBERSECURITY TOOLKIT</p>
+        <h1 id="title">Password<br><em>Strength Checker.</em></h1>
+        <p class="intro">See how strong a password is, find ways to improve it, or generate a fresh one. Everything runs in your browser.</p>
+      </div>
+    </section>
+    <noscript><p class="notice">Enable JavaScript to use the checker and generator.</p></noscript>
+    <div class="tools-grid">
+      <section class="panel" id="checker" aria-labelledby="checker-title">
+        <div class="panel-header"><span class="icon" aria-hidden="true">◈</span><div><h2 id="checker-title">Analyze a password</h2><p>Get feedback as you type.</p></div></div>
+        <label for="password">Password to check</label>
+        <div class="field"><input id="password" type="password" maxlength="1024" placeholder="Enter a sample password…" autocomplete="off" spellcheck="false" autocapitalize="off"><button type="button" class="field-action" id="reveal" aria-controls="password" aria-pressed="false">Show</button></div>
+        <div class="meter-info"><span id="rating">Awaiting input</span><span><strong id="score">0</strong><span class="score-max"> / 100</span></span></div>
+        <meter id="meter" min="0" max="100" value="0" aria-label="Estimated password strength"></meter>
+        <p class="hint" id="feedback" role="status">Try a sample password to see what makes it easier or harder to guess.</p>
+        <div class="rule-block">
+          <h3>Password characteristics</h3>
+          <ul class="rules" id="rules">
+            <li data-rule="length">15+ characters</li><li data-rule="upper">Uppercase</li><li data-rule="lower">Lowercase</li><li data-rule="number">Number</li><li data-rule="symbol">Symbol</li>
+          </ul>
+        </div>
+      </section>
+      <section class="panel" id="generator" aria-labelledby="generator-title">
+        <div class="panel-header"><span class="icon" aria-hidden="true">✦</span><div><h2 id="generator-title">Generate a password</h2><p>Create a random password on your device.</p></div></div>
+        <label for="generated">Generated password</label>
+        <div class="field generated-field"><input id="generated" type="text" readonly placeholder="Your password appears here" autocomplete="off" spellcheck="false"><button type="button" class="field-action" id="copy" disabled>Copy</button></div>
+        <div class="length-info"><label for="length">Password length</label><output id="length-value" for="length">24</output></div>
+        <input id="length" type="range" min="16" max="64" value="24">
+        <div class="range-labels" aria-hidden="true"><span>16</span><span>64</span></div>
+        <fieldset><legend>Include characters</legend><div class="options">
+          <label><input type="checkbox" name="group" value="upper" checked> A–Z</label>
+          <label><input type="checkbox" name="group" value="lower" checked> a–z</label>
+          <label><input type="checkbox" name="group" value="number" checked> 0–9</label>
+          <label><input type="checkbox" name="group" value="symbol" checked> !@#</label>
+        </div></fieldset>
+        <div class="generator-actions"><button class="primary" id="generate" type="button"><span aria-hidden="true">✦</span> Generate password</button><button class="secondary" id="analyze" type="button" disabled>Check result</button></div>
+        <p class="generator-status" id="generator-status" role="status"></p>
+      </section>
+    </div>
+    <section class="guide" id="guide" aria-labelledby="guide-title">
+      <p class="eyebrow"><span aria-hidden="true"></span> SECURITY AWARENESS</p>
+      <h2 id="guide-title">Better password habits</h2>
+      <div class="tips">
+        <article><span class="icon" aria-hidden="true">⟡</span><h3>Go longer</h3><p>Use a long random password or a passphrase made from randomly chosen, unrelated words.</p></article>
+        <article><span class="icon" aria-hidden="true">⌘</span><h3>Make each one unique</h3><p>Use a different password for every account. A password manager can create and save them for you.</p></article>
+        <article><span class="icon" aria-hidden="true">⊕</span><h3>Turn on MFA</h3><p>Multifactor authentication adds another check when someone tries to sign in with your password.</p></article>
+      </div>
+      <p class="sources">Guidance from <a href="https://pages.nist.gov/800-63-4/sp800-63b.html">NIST</a> and <a href="https://www.cisa.gov/sites/default/files/2024-09/Secure-Our-World-4-Easy-Ways-Stay-Safe-Online-Tip-Sheet.pdf">CISA</a>.</p>
+    </section>
+  </main>
+  <footer><div class="wrap footer-inner"><span>Passwork · Cybersecurity awareness capstone</span><span>Educational estimate · No password storage</span></div></footer>
+</body>
+</html>
